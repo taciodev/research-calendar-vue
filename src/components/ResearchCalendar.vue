@@ -95,4 +95,22 @@ export default {
   font-size: 0.9rem;
   color: #666666;
 }
+
+@media screen and (max-width: 1024px) {
+  .research-calendar {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .research-calendar {
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .item-header h2 {
+    font-size: 1.25rem;
+  }
+}
 </style>

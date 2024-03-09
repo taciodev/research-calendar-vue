@@ -5,7 +5,7 @@
       <input
         type="text"
         class="search"
-        placeholder="Digite a página desejada..."
+        placeholder="Digite a página..."
         v-model="page"
       />
       <button type="submit" class="btn">Ir</button>
@@ -82,5 +82,11 @@ header {
 
 .btn:hover {
   background-color: var(--primary-color-btn-hover);
+}
+
+@media screen and (max-width: 425px) {
+  .search {
+    width: 112px;
+  }
 }
 </style>
