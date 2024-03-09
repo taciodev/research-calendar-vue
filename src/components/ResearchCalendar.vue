@@ -34,7 +34,6 @@
 export default {
   props: {
     items: Array,
-    required: true,
   },
 };
 </script>
