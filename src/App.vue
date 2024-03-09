@@ -3,13 +3,7 @@
     <TheHeader />
     <MainTitle />
     <div class="container">
-      <div class="page-navigation">
-        <button @click="previousPage" :disabled="responseData.page === 1">
-          Back
-        </button>
-        <span>{{ responseData.page }}</span>
-        <button @click="nextPage">Next</button>
-      </div>
+      <PageNavigation :responseData="responseData" @update-page="getData" />
       <ResearchCalendar :items="responseData.items" />
     </div>
   </div>
@@ -19,6 +13,7 @@
 import TheHeader from "./components/TheHeader.vue";
 import MainTitle from "./components/MainTitle.vue";
 import ResearchCalendar from "./components/ResearchCalendar.vue";
+import PageNavigation from "./components/PageNavigation.vue";
 import { HTTP } from "./plugins/axios";
 
 export default {
@@ -27,6 +22,7 @@ export default {
     TheHeader,
     MainTitle,
     ResearchCalendar,
+    PageNavigation,
   },
   data() {
     return {
@@ -34,11 +30,16 @@ export default {
     };
   },
   mounted() {
-    HTTP.get()
-      .then((response) => {
-        this.responseData = response.data;
-      })
-      .catch((error) => console.log(error));
+    this.getData(1);
+  },
+  methods: {
+    getData(page) {
+      HTTP.get(`?page=${page}`)
+        .then((response) => {
+          this.responseData = response.data;
+        })
+        .catch((error) => console.log(error));
+    },
   },
 };
 </script>
@@ -67,12 +68,5 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-}
-
-.page-navigation {
-  background-color: red;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 </style>
