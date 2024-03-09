@@ -1,10 +1,13 @@
 # Research Calendar Vue
 
-Este é um projeto de aplicação SPA (Single Page Application) desenvolvido em Vue.js que consome a API pública do IBGE para exibir o calendário de divulgação de pesquisas.
+Este é um projeto de aplicação SPA (Single Page Application) desenvolvido em Vue.js que consome a API pública do IBGE para exibir o calendário de divulgação de pesquisas de forma eficiente e amigável ao usuário.
+
+## Tecnologias Utilizadas
+
+- **Vue.js:** Um framework progressivo para a construção de interfaces de usuário. Vue.js facilita a criação de aplicativos interativos e reativos.
+- **axios:** Um cliente HTTP baseado em Promises para realizar requisições HTTP. Utilizamos o axios para fazer requisições à API do IBGE e obter os dados do calendário de divulgação de pesquisas.
 
 ## Instalação do Projeto
-
-Para configurar o projeto, siga os passos abaixo:
 
 1. Clone o repositório do GitHub:
 
