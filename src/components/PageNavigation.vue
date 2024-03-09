@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .page-navigation {
-  background-color: #333333;
+  background-color: var(--second-layer);
   border-radius: 6px;
   color: white;
   display: flex;
@@ -45,7 +45,7 @@ export default {
 }
 
 .navigation-button {
-  background-color: #28a745;
+  background-color: var(--primary-color-btn);
   color: white;
   border: none;
   padding: 8px 16px;
@@ -54,7 +54,7 @@ export default {
 }
 
 .navigation-button:disabled {
-  background-color: #91d18b;
+  background-color: var(--secondary-color-btn);
   cursor: not-allowed;
 }
 

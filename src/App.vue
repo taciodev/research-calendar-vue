@@ -46,27 +46,23 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Poppins, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  /* margin-top: 60px; */
+  color: var(--card-text-color);
 }
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa; /*  #f5f5f5 #ffffff */
+  background-color: var(--first-layer);
 }
 
 .container {
-  /* background-color: #d6d6d6; */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   width: 80%;
   margin: 80px auto;
   padding: 20px;
-  border-radius: 8px;
 }
 </style>

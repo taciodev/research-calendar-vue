@@ -50,7 +50,7 @@ export default {
 }
 
 .research-item {
-  background-color: #ffffff;
+  background-color: var(--card-background);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;

@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 header {
-  background-color: #333333;
+  background-color: var(--second-layer);
   padding: 15px 20px;
   width: 100%;
   max-width: 80%;
@@ -71,7 +71,7 @@ header {
 }
 
 .btn {
-  background-color: #28a745;
+  background-color: var(--primary-color-btn);
   color: white;
   padding: 8px 15px;
   border: none;
@@ -81,6 +81,6 @@ header {
 }
 
 .btn:hover {
-  background-color: #45a049;
+  background-color: var(--primary-color-btn-hover);
 }
 </style>
