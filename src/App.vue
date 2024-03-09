@@ -51,22 +51,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #e6e6e6; /* Cor de fundo do body */
+  background-color: #f8f9fa; /*  #f5f5f5 #ffffff */
 }
 
 .container {
-  background-color: white;
+  /* background-color: #d6d6d6; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   width: 80%;
-  margin: 50px auto; /* Espaçamento maior para o container */
+  margin: 80px auto;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 </style>

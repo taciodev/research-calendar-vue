@@ -1,26 +1,28 @@
 <template>
-  <div class="divulgacoes">
-    <div v-for="divulgacao in items" :key="divulgacao.id" class="divulgacao">
-      <h2>{{ divulgacao.titulo }}</h2>
-      <p class="descricao">{{ divulgacao.descricao }}</p>
-      <div class="info">
-        <div class="item">
-          <p>Data de divulgação:</p>
+  <div class="research-calendar">
+    <div v-for="divulgacao in items" :key="divulgacao.id" class="research-item">
+      <div class="item-header">
+        <h2>{{ divulgacao.titulo }}</h2>
+        <p class="description">{{ divulgacao.descricao }}</p>
+      </div>
+      <div class="item-details">
+        <div class="detail">
+          <p class="label">Data de divulgação:</p>
           <p>{{ divulgacao.data_divulgacao }}</p>
         </div>
-        <div class="item">
-          <p>Produto:</p>
+        <div class="detail">
+          <p class="label">Produto:</p>
           <p>{{ divulgacao.nome_produto }}</p>
         </div>
-        <div class="item">
-          <p>Ano de referência:</p>
+        <div class="detail">
+          <p class="label">Ano de referência:</p>
           <p>
             {{ divulgacao.ano_referencia_inicio }} -
             {{ divulgacao.ano_referencia_fim }}
           </p>
         </div>
-        <div class="item">
-          <p>Mês de referência:</p>
+        <div class="detail">
+          <p class="label">Mês de referência:</p>
           <p>
             {{ divulgacao.mes_referencia_inicio }} -
             {{ divulgacao.mes_referencia_fim }}
@@ -40,33 +42,38 @@ export default {
 </script>
 
 <style scoped>
-.divulgacoes {
-  display: flex;
-  flex-wrap: wrap;
+.research-calendar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.divulgacao {
-  width: 45%;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.research-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
-.descricao {
+.item-header {
+  margin-bottom: 10px;
+}
+
+.description {
   font-style: italic;
 }
 
-.info {
+.item-details {
   display: flex;
   flex-direction: column;
 }
 
-.item {
-  margin-top: 5px;
+.detail {
+  margin-bottom: 10px;
 }
 
-.item p {
-  margin: 0;
+.label {
+  font-weight: bold;
 }
 </style>

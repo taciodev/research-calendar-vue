@@ -1,5 +1,5 @@
 <template>
-  <h1>Título</h1>
+  <h1>IBGE: Calendário de Pesquisas</h1>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ h1 {
   font-size: 48px;
   color: #333;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 150px;
   margin-bottom: 50px;
 }
 </style>

@@ -18,35 +18,44 @@ export default {};
 
 <style scoped>
 header {
-  background-color: transparent;
-  padding: 20px;
+  background-color: #333333;
+  padding: 15px 20px;
   width: 100%;
+  max-width: 80%;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
+
 .logo {
-  color: #000000;
-  font-size: 24px;
+  color: #ffffff;
+  font-size: 20px;
 }
+
 .search {
   width: 200px;
-  padding: 10px;
+  padding: 8px;
   border-radius: 5px;
   border: none;
 }
+
 .btn {
-  background-color: #4caf50;
+  background-color: #28a745;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .btn:hover {
   background-color: #45a049;
 }

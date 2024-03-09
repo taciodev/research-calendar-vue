@@ -1,10 +1,14 @@
 <template>
   <div class="page-navigation">
-    <button @click="previousPage" :disabled="responseData.page === 1">
+    <button
+      @click="previousPage"
+      :disabled="responseData.page === 1"
+      class="navigation-button"
+    >
       Anterior
     </button>
-    <span>{{ responseData.page }}</span>
-    <button @click="nextPage">Próximo</button>
+    <span class="page-number">{{ responseData.page }}</span>
+    <button @click="nextPage" class="navigation-button">Próximo</button>
   </div>
 </template>
 
@@ -31,9 +35,31 @@ export default {
 
 <style scoped>
 .page-navigation {
-  background-color: red;
+  /* background-color: #f0f0f0; */
+  background-color: #333333;
+  border-radius: 10px;
+  color: white;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.navigation-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navigation-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.page-number {
+  font-weight: bold;
 }
 </style>
