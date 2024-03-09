@@ -3,6 +3,7 @@ export function validateParameters(params) {
     return false;
   }
 
+  // Verifica se a data de início é menor que a data de fim
   const dataDe = new Date(params.de);
   const dataAte = new Date(params.ate);
 
