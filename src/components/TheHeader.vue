@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="logo">Seu Logo</div>
+    <div class="logo">Calendário</div>
     <form @submit.prevent="goToPage">
       <input
         type="text"
