@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <TheHeader />
+    <TheHeader :responseData="responseData" @update-page="getData" />
     <MainTitle />
     <div class="container">
       <PageNavigation :responseData="responseData" @update-page="getData" />

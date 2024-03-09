@@ -35,9 +35,8 @@ export default {
 
 <style scoped>
 .page-navigation {
-  /* background-color: #f0f0f0; */
   background-color: #333333;
-  border-radius: 10px;
+  border-radius: 6px;
   color: white;
   display: flex;
   align-items: center;
@@ -50,12 +49,12 @@ export default {
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 .navigation-button:disabled {
-  background-color: #cccccc;
+  background-color: #91d18b;
   cursor: not-allowed;
 }
 

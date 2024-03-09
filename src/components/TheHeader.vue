@@ -1,11 +1,12 @@
 <template>
   <header>
     <div class="logo">Seu Logo</div>
-    <form>
+    <form @submit.prevent="goToPage">
       <input
         type="text"
         class="search"
         placeholder="Digite a página desejada..."
+        v-model="page"
       />
       <button type="submit" class="btn">Ir</button>
     </form>
@@ -13,7 +14,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    responseData: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      page: "",
+    };
+  },
+  methods: {
+    goToPage() {
+      const isGreaterThanZero = this.page > 0;
+      const isPageWithinBounds = this.page <= this.responseData.totalPages;
+
+      if (isGreaterThanZero && isPageWithinBounds) {
+        this.$emit("update-page", this.page);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -42,7 +65,8 @@ header {
 .search {
   width: 200px;
   padding: 8px;
-  border-radius: 5px;
+  margin-right: 6px;
+  border-radius: 6px;
   border: none;
 }
 
@@ -51,7 +75,7 @@ header {
   color: white;
   padding: 8px 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
