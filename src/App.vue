@@ -3,8 +3,11 @@
     <TheHeader />
     <MainTitle />
     <div class="container">
-      <!-- Conteúdo do container aqui -->
-      <p>Este é um container com um fundo diferente e uma sombra.</p>
+      <div class="page-navigation">
+        <button @click="previousPage">Back</button>
+        <span>{{ responseData.page }}</span>
+        <button @click="nextPage">Next</button>
+      </div>
     </div>
   </div>
 </template>
@@ -12,12 +15,25 @@
 <script>
 import TheHeader from "./components/TheHeader.vue";
 import MainTitle from "./components/MainTitle.vue";
+import { HTTP } from "./plugins/axios";
 
 export default {
   name: "App",
   components: {
     TheHeader,
     MainTitle,
+  },
+  data() {
+    return {
+      responseData: { page: null, items: [] },
+    };
+  },
+  mounted() {
+    HTTP.get()
+      .then((response) => {
+        this.responseData = response.data;
+      })
+      .catch((error) => console.log(error));
   },
 };
 </script>
@@ -44,7 +60,14 @@ body {
   width: 80%;
   margin: 50px auto; /* Espaçamento maior para o container */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.page-navigation {
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 </style>
