@@ -19,6 +19,7 @@ import PageNavigation from "./components/PageNavigation.vue";
 import ParametersInput from "./components/ParametersInput.vue";
 import { HTTP } from "./plugins/axios";
 import { validateParameters } from "./utils/validateParameters";
+import { formatDate } from "./utils/formatDate";
 
 export default {
   name: "App",
@@ -32,7 +33,7 @@ export default {
   data() {
     return {
       responseData: { page: null, items: [] },
-      params: { qtd: 5, de: "2020-01-01", ate: "2024-03-08" },
+      params: { qtd: 5, de: "2020-01-01", ate: formatDate(new Date()) },
       hasError: false,
     };
   },
@@ -40,54 +41,34 @@ export default {
     this.getData(1);
   },
   methods: {
-    getData(page) {
-      const isParametersValid = validateParameters(this.params);
-      let params = this.params;
-
-      if (!isParametersValid) {
-        params = { qtd: 5, de: "2020-01-01", ate: "2024-03-08" };
+    async getData(page) {
+      try {
+        const params = validateParameters(this.params)
+          ? this.params
+          : { qtd: 5, de: "2020-01-01", ate: "2024-03-08" };
+        const response = await HTTP.get(`?page=${page}`, { params });
+        this.responseData = response.data;
+      } catch (error) {
+        console.error(error);
       }
-
-      HTTP.get(`?page=${page}`, { params })
-        .then((response) => {
-          this.responseData = response.data;
-        })
-        .catch((error) => console.log(error));
     },
     receiveDataFromInput(data) {
-      const dataWithoutProxy = { ...data };
-
-      this.params = {
-        qtd: dataWithoutProxy.qtd ? dataWithoutProxy.qtd : 5,
-        de: dataWithoutProxy.de ? dataWithoutProxy.de : "2020-01-01",
-        ate: dataWithoutProxy.ate ? dataWithoutProxy.ate : "2024-03-08",
-      };
-
-      const isParametersValid = validateParameters(this.params);
-      this.hasError = !isParametersValid;
-
-      if (isParametersValid) {
-        this.getData(this.responseData.page);
-      }
+      const { qtd = 5, de = "2020-01-01", ate = "2024-03-08" } = data;
+      this.params = { qtd, de, ate };
+      this.hasError = !validateParameters(this.params);
+      if (!this.hasError) this.getData(this.responseData.page);
     },
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Poppins, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--card-text-color);
-}
-
 body {
-  font-family: Arial, sans-serif;
+  font-family: Poppins, sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--first-layer);
+  color: var(--card-text-color);
 }
 
 .container {
