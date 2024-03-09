@@ -4,10 +4,13 @@
     <MainTitle />
     <div class="container">
       <div class="page-navigation">
-        <button @click="previousPage">Back</button>
+        <button @click="previousPage" :disabled="responseData.page === 1">
+          Back
+        </button>
         <span>{{ responseData.page }}</span>
         <button @click="nextPage">Next</button>
       </div>
+      <ResearchCalendar :items="responseData.items" />
     </div>
   </div>
 </template>
@@ -15,6 +18,7 @@
 <script>
 import TheHeader from "./components/TheHeader.vue";
 import MainTitle from "./components/MainTitle.vue";
+import ResearchCalendar from "./components/ResearchCalendar.vue";
 import { HTTP } from "./plugins/axios";
 
 export default {
@@ -22,6 +26,7 @@ export default {
   components: {
     TheHeader,
     MainTitle,
+    ResearchCalendar,
   },
   data() {
     return {
