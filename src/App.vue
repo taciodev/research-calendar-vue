@@ -4,6 +4,7 @@
     <MainTitle />
     <div class="container">
       <PageNavigation :responseData="responseData" @update-page="getData" />
+      <div v-if="hasError" class="error-message">Parâmetros inválidos.</div>
       <ParametersInput @userParameter="receiveDataFromInput" />
       <ResearchCalendar :items="responseData.items" />
     </div>
@@ -32,6 +33,7 @@ export default {
     return {
       responseData: { page: null, items: [] },
       params: { qtd: 5, de: "2020-01-01", ate: "2024-03-08" },
+      hasError: false,
     };
   },
   mounted() {
@@ -54,7 +56,6 @@ export default {
     },
     receiveDataFromInput(data) {
       const dataWithoutProxy = { ...data };
-      // const isParametersValid = validateParameters(dataWithoutProxy);
 
       this.params = {
         qtd: dataWithoutProxy.qtd ? dataWithoutProxy.qtd : 5,
@@ -62,7 +63,12 @@ export default {
         ate: dataWithoutProxy.ate ? dataWithoutProxy.ate : "2024-03-08",
       };
 
-      this.getData(this.responseData.page);
+      const isParametersValid = validateParameters(this.params);
+      this.hasError = !isParametersValid;
+
+      if (isParametersValid) {
+        this.getData(this.responseData.page);
+      }
     },
   },
 };
@@ -90,15 +96,9 @@ body {
   padding: 20px;
 }
 
-.parameters-container {
-  margin-bottom: 20px;
-}
-
-.parameters-container label {
-  margin-right: 10px;
-}
-
-.parameters-container input {
-  margin-bottom: 10px;
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
 }
 </style>
